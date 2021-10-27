@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  db: # use this for server in adminer
+    image: 'postgres:latest'
+    restart: always
+    container_name: db
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=jwt
+    ports:
+      - 5431:5432 # works with 5431, but doesn't work with 5432...???
+
+  adminer:
+    image: 'adminer:latest'
+    restart: always
+    ports:
+      - 6080:8080
