@@ -12,10 +12,11 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        String hardCodedUsername = "username";
+        String hardcodedUsername = "username";
+        String hardcodedPassword = "$2a$10$nA1HW0ZKGXQ1wZIEDa2lNOl1tyYzocS2Jenalq48UDBha1qR6wY7W";
 
-        if (hardCodedUsername.equals(username)) {
-            return new User(hardCodedUsername, "$2a$10$nA1HW0ZKGXQ1wZIEDa2lNOl1tyYzocS2Jenalq48UDBha1qR6wY7W", new ArrayList<>());
+        if (hardcodedUsername.equals(username)) {
+            return new User(hardcodedUsername, hardcodedPassword, new ArrayList<>());
         } else {
             throw new UsernameNotFoundException(String.format("User not found with the following username: %s", username));
         }
