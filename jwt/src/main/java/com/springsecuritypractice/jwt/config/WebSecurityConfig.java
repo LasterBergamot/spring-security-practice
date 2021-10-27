@@ -1,7 +1,6 @@
 package com.springsecuritypractice.jwt.config;
 
 import com.springsecuritypractice.jwt.service.JwtUserDetailsService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,13 +18,15 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final JwtAuthenticationEntryPoint entryPoint;
+    @Autowired
+    private JwtAuthenticationEntryPoint entryPoint;
 
-    private final JwtUserDetailsService userDetailsService;
+    @Autowired
+    private JwtUserDetailsService userDetailsService;
 
+    @Autowired
     private JwtRequestFilter requestFilter;
 
     @Autowired
