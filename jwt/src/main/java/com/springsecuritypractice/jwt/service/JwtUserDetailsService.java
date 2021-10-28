@@ -28,7 +28,7 @@ public class JwtUserDetailsService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("User not found with the following username: %s", username)));
     }
 
-    public UserDto save(UserCreateDto dto) {
+    public UserDto register(UserCreateDto dto) {
         User transientUser = converter.toEntity(dto);
         User persistedUser = repository.save(transientUser);
 
