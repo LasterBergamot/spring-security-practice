@@ -1,0 +1,1 @@
+INSERT INTO jwt_user (username, password) VALUES ('admin', '$2a$10$qn8rQSIo1hJVnIY66bKSAenPbzw/3XqoMMH6hScixSDkWnjqcmNh2');
