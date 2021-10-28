@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,14 +17,18 @@ public class StartupService {
 
     private final UserRepository repository;
 
+    private final PasswordEncoder bcryptEncoder;
+
     @EventListener(ApplicationReadyEvent.class)
     public void runAfterStartup() {
         List<User> allUsers = repository.findAll();
         log.info("Number of users: {}", allUsers.size());
 
-        User newUser = new User();
-        newUser.setUsername("admin");
-        newUser.setPassword("admin");
+        String admin = "admin";
+        User newUser = User.builder()
+                .username(admin)
+                .password(bcryptEncoder.encode(admin))
+                .build();
         log.info("Saving new user...");
         repository.save(newUser);
 

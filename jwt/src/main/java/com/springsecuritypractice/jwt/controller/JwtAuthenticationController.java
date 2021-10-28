@@ -1,5 +1,7 @@
 package com.springsecuritypractice.jwt.controller;
 
+import com.springsecuritypractice.jwt.dto.UserCreateDto;
+import com.springsecuritypractice.jwt.dto.UserDto;
 import com.springsecuritypractice.jwt.model.JwtRequest;
 import com.springsecuritypractice.jwt.model.JwtResponse;
 import com.springsecuritypractice.jwt.service.JwtUserDetailsService;
@@ -28,7 +30,7 @@ public class JwtAuthenticationController {
     private final JwtTokenUtil tokenUtil;
 
     @PostMapping("/authenticate")
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
+    public ResponseEntity<JwtResponse> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
         String username = authenticationRequest.getUsername();
         authenticate(username, authenticationRequest.getPassword());
 
@@ -36,6 +38,11 @@ public class JwtAuthenticationController {
         final String token = tokenUtil.generateToken(userDetails);
 
         return ResponseEntity.ok(new JwtResponse(token));
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<UserDto> saveUser(@RequestBody UserCreateDto dto) {
+        return ResponseEntity.ok(userDetailsService.save(dto));
     }
 
     private void authenticate(String username, String password) throws Exception {
