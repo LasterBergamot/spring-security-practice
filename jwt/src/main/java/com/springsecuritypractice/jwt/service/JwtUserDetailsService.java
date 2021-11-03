@@ -3,7 +3,7 @@ package com.springsecuritypractice.jwt.service;
 import com.springsecuritypractice.jwt.converter.UserConverter;
 import com.springsecuritypractice.jwt.dto.UserCreateDto;
 import com.springsecuritypractice.jwt.dto.UserDto;
-import com.springsecuritypractice.jwt.model.User;
+import com.springsecuritypractice.jwt.entity.User;
 import com.springsecuritypractice.jwt.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.Optional;

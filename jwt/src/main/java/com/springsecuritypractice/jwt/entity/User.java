@@ -1,4 +1,4 @@
-package com.springsecuritypractice.jwt.model;
+package com.springsecuritypractice.jwt.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

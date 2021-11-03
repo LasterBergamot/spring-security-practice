@@ -2,7 +2,7 @@ package com.springsecuritypractice.jwt.converter;
 
 import com.springsecuritypractice.jwt.dto.UserCreateDto;
 import com.springsecuritypractice.jwt.dto.UserDto;
-import com.springsecuritypractice.jwt.model.User;
+import com.springsecuritypractice.jwt.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;

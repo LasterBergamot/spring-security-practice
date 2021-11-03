@@ -18,6 +18,9 @@
 		<jjwt.version>0.9.1</jjwt.version>
 		<jaxb-api.version>2.4.0-b180830.0359</jaxb-api.version>
 		<lombok.version>1.18.22</lombok.version>
+		<spring-boot-starter-data-jpa.version>2.5.6</spring-boot-starter-data-jpa.version>
+		<postgresql.version>42.3.0</postgresql.version>
+		<hibernate-core.version>5.5.8.Final</hibernate-core.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -48,17 +51,17 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-			<version>2.5.6</version>
+			<version>${spring-boot-starter-data-jpa.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>42.3.0</version>
+			<version>${postgresql.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>5.5.8.Final</version>
+			<version>${hibernate-core.version}</version>
 		</dependency>
 
 		<dependency>

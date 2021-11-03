@@ -1,4 +1,4 @@
-package com.springsecuritypractice.jwt.config;
+package com.springsecuritypractice.jwt.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
