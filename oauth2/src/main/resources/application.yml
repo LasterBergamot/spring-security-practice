@@ -12,3 +12,17 @@ spring:
           google:
             client-id: 195422349458-srkl5uvppaa20sj6lp9j7pi91o2d8l8m.apps.googleusercontent.com
             client-secret: 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
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5431/oauth2
+    username: admin
+    password: admin
+  sql:
+    init:
+      mode: always
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
