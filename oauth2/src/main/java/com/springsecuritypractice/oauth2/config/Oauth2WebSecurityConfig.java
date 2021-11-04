@@ -36,7 +36,7 @@ public class Oauth2WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .oauth2Login()
                 .userInfoEndpoint()
-                .userService(githubService::loadUser)
+                .userService(githubService)
                 .oidcUserService(googleService);
     }
 }

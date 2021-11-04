@@ -1,7 +1,7 @@
 package com.springsecuritypractice.oauth2.service;
 
+import com.springsecuritypractice.oauth2.converter.OAuth2ConverterWrapper;
 import com.springsecuritypractice.oauth2.model.Oauth2PracticeUser;
-import com.springsecuritypractice.oauth2.model.ResourceServer;
 import com.springsecuritypractice.oauth2.repository.Oauth2PracticeUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -14,35 +14,20 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class OAuth2PracticeService implements OAuth2UserService<OAuth2UserRequest, DefaultOAuth2User> {
+public class OAuth2PracticeService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
 
     private final Oauth2PracticeUserRepository repository;
 
     private final DefaultOAuth2UserService defaultUserService;
 
+    private final OAuth2ConverterWrapper converter;
+
     @Override
     public DefaultOAuth2User loadUser(OAuth2UserRequest request) throws OAuth2AuthenticationException {
         OAuth2User oAuth2User = defaultUserService.loadUser(request);
-        Oauth2PracticeUser transientUser = convertToEntity(oAuth2User);
+        Oauth2PracticeUser transientUser = converter.toEntity(oAuth2User);
         Oauth2PracticeUser persisted = repository.save(transientUser);
 
         return (DefaultOAuth2User) oAuth2User;
-    }
-
-    private Oauth2PracticeUser convertToEntity(OAuth2User oAuth2User) {
-        Oauth2PracticeUser user = null;
-
-        if (oAuth2User instanceof DefaultOAuth2User) {
-            DefaultOAuth2User defaultOAuth2User = ((DefaultOAuth2User) oAuth2User);
-
-            user = Oauth2PracticeUser.builder()
-                    .email(defaultOAuth2User.getAttribute("email"))
-                    .name(defaultOAuth2User.getAttribute("name"))
-                    .uniqueIdentifier(defaultOAuth2User.getAttribute("node_id"))
-                    .resourceServer(ResourceServer.GITHUB)
-                    .build();
-        }
-
-        return user;
     }
 }
