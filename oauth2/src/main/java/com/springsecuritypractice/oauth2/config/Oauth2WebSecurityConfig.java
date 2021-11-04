@@ -1,7 +1,7 @@
 package com.springsecuritypractice.oauth2.config;
 
-import com.springsecuritypractice.oauth2.service.OAuth2OidcPracticeService;
-import com.springsecuritypractice.oauth2.service.OAuth2PracticeService;
+import com.springsecuritypractice.oauth2.service.OAuth2PracticeUserService;
+import com.springsecuritypractice.oauth2.service.Oauth2PracticeOidcUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -14,10 +14,10 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 public class Oauth2WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private OAuth2PracticeService githubService;
+    private OAuth2PracticeUserService userService;
 
     @Autowired
-    private OAuth2OidcPracticeService googleService;
+    private Oauth2PracticeOidcUserService oidcUserService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -36,7 +36,7 @@ public class Oauth2WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .oauth2Login()
                 .userInfoEndpoint()
-                .userService(githubService)
-                .oidcUserService(googleService);
+                .userService(userService)
+                .oidcUserService(oidcUserService);
     }
 }
