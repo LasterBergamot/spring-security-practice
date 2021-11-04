@@ -18,11 +18,11 @@ public class OAuth2PracticeService implements OAuth2UserService<OAuth2UserReques
 
     private final Oauth2PracticeUserRepository repository;
 
-    private final DefaultOAuth2UserService userService;
+    private final DefaultOAuth2UserService defaultUserService;
 
     @Override
-    public DefaultOAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-        OAuth2User oAuth2User = userService.loadUser(userRequest);
+    public DefaultOAuth2User loadUser(OAuth2UserRequest request) throws OAuth2AuthenticationException {
+        OAuth2User oAuth2User = defaultUserService.loadUser(request);
         Oauth2PracticeUser transientUser = convertToEntity(oAuth2User);
         Oauth2PracticeUser persisted = repository.save(transientUser);
 
