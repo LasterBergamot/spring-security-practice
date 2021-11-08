@@ -1,10 +1,10 @@
-package com.springsecuritypractice.mtls;
+package com.spring.security.practice.mtlsserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MtlsApplicationTests {
+class MtlsServerApplicationTests {
 
 	@Test
 	void contextLoads() {
