@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId: e734bb97dfeaa66c8a96
+            clientSecret: 2f95c8d53a40c30a250144aa344e9c5105c11cf7
+          google:
+            client-id: 195422349458-srkl5uvppaa20sj6lp9j7pi91o2d8l8m.apps.googleusercontent.com
+            client-secret: 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
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5431/oauth2
+    username: admin
+    password: admin
+  sql:
+    init:
+      mode: always
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
