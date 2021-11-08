@@ -8,6 +8,7 @@ import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -19,6 +20,7 @@ public abstract class PracticeUserService<S extends OAuth2UserService<R, U>, R e
 
     private final S userService;
 
+    @Transactional
     public U loadUser(R request) {
         U oauth2User = userService.loadUser(request);
         Oauth2PracticeUser transientUser = converter.toEntity(oauth2User);
