@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: ssp-mtls-server
+
+server:
+  port: 9002
+  ssl:
+    enabled: true
+    client-auth: need
+    key-store: classpath:ssp-mtls-server.jks
+    key-store-password: password
+    key-alias: ssp-mtls-server
+    key-store-type: JKS
+    key-store-provider: SUN
+    trust-store: classpath:ssp-mtls-server.jks
+    trust-store-password: password
+    trust-store-type: JKS
