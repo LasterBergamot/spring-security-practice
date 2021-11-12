@@ -3,7 +3,7 @@ spring:
     name: ssp-mtls-client
 
 server:
-  port: 9001
+  port: 9003
   ssl:
     enabled: true
     client-auth: need
@@ -17,4 +17,4 @@ server:
     trust-store-type: JKS
 
 endpoint:
-  ms-service: https://localhost:9002/ssp-mtls-server/data
+  server-service: https://localhost:9002/ssp-mtls-server/data

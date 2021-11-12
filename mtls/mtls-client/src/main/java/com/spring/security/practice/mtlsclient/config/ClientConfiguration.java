@@ -29,11 +29,11 @@ public class ClientConfiguration {
             keyStore = KeyStore.getInstance("jks");
             ClassPathResource classPathResource = new ClassPathResource("ssp-mtls-client.jks");
             InputStream inputStream = classPathResource.getInputStream();
-            keyStore.load(inputStream, "ssp-mtls-client".toCharArray());
+            keyStore.load(inputStream, "password".toCharArray());
 
             SSLConnectionSocketFactory sslConnectionSocketFactory = new SSLConnectionSocketFactory(new SSLContextBuilder()
                     .loadTrustMaterial(null, new TrustSelfSignedStrategy())
-                    .loadKeyMaterial(keyStore, "ssp-mtls-client".toCharArray()).build(),
+                    .loadKeyMaterial(keyStore, "password".toCharArray()).build(),
                     NoopHostnameVerifier.INSTANCE);
 
             HttpClient httpClient = HttpClients.custom().setSSLSocketFactory(sslConnectionSocketFactory)

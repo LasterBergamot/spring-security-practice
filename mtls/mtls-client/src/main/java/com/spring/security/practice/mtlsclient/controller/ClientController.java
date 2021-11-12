@@ -28,7 +28,7 @@ public class ClientController {
 
     @GetMapping("/server-data")
     public String getServerData() {
-        String serverEndpoint = environment.getProperty("ms-service");
+        String serverEndpoint = environment.getProperty("endpoint.server-service");
 
         try {
             return restTemplate.getForObject(new URI(serverEndpoint), String.class);
