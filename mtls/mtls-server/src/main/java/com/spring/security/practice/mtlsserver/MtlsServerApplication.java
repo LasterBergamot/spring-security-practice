@@ -1,13 +1,13 @@
-package com.springsecuritypractice.mtls;
+package com.spring.security.practice.mtlsserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MtlsApplication {
+public class MtlsServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MtlsApplication.class, args);
+		SpringApplication.run(MtlsServerApplication.class, args);
 	}
 
 }
