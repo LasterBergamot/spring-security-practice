@@ -19,6 +19,8 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 public class ClientConfiguration {
 
+    private static final char[] PASSWORD = "password".toCharArray();
+
     @Bean
     public RestTemplate restTemplate() {
         RestTemplate restTemplate = new RestTemplate();
@@ -29,11 +31,11 @@ public class ClientConfiguration {
             keyStore = KeyStore.getInstance("jks");
             ClassPathResource classPathResource = new ClassPathResource("ssp-mtls-client.jks");
             InputStream inputStream = classPathResource.getInputStream();
-            keyStore.load(inputStream, "password".toCharArray());
+            keyStore.load(inputStream, PASSWORD);
 
             SSLConnectionSocketFactory sslConnectionSocketFactory = new SSLConnectionSocketFactory(new SSLContextBuilder()
                     .loadTrustMaterial(null, new TrustSelfSignedStrategy())
-                    .loadKeyMaterial(keyStore, "password".toCharArray()).build(),
+                    .loadKeyMaterial(keyStore, PASSWORD).build(),
                     NoopHostnameVerifier.INSTANCE);
 
             HttpClient httpClient = HttpClients.custom().setSSLSocketFactory(sslConnectionSocketFactory)
